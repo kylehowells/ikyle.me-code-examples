@@ -67,34 +67,34 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, NSToolbarDelegate {
 	
 	
 	// MARK: - NSToolbarDelegate
-	
+
 	func toolbar(_ toolbar: NSToolbar, itemForItemIdentifier itemIdentifier: NSToolbarItem.Identifier, willBeInsertedIntoToolbar flag: Bool) -> NSToolbarItem?
 	{
 		if (itemIdentifier.rawValue == "mainTabsToolbarItem")
 		{
-            let group = NSToolbarItemGroup.init(itemIdentifier: itemIdentifier,
+			let group = NSToolbarItemGroup.init(itemIdentifier: itemIdentifier,
 												titles: ["First", "Second"],
 												selectionMode: .selectOne,
 												labels: ["First view", "Second view"],
 												target: self, action: #selector(toolbarGroupSelectionChanged))
-            group.setSelected(true, at: 0)
-            return group
-        }
-        
-        return nil
-    }
-    
-    func toolbarDefaultItemIdentifiers(_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
-        return [NSToolbarItem.Identifier(rawValue: "mainTabsToolbarItem")]
-    }
-    
-    func toolbarAllowedItemIdentifiers(_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
-        return self.toolbarDefaultItemIdentifiers(toolbar)
-    }
+			group.setSelected(true, at: 0)
+			return group
+		}
+		
+		return nil
+	}
 
-	
-    @objc func toolbarGroupSelectionChanged(_ sender: NSToolbarItemGroup) {
-        print("toolbarGroupSelectionChanged( \(sender.selectedIndex) )")
-        tabBarController.selectedIndex = sender.selectedIndex
-    }
+	func toolbarDefaultItemIdentifiers(_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
+		return [NSToolbarItem.Identifier(rawValue: "mainTabsToolbarItem")]
+	}
+
+	func toolbarAllowedItemIdentifiers(_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
+		return self.toolbarDefaultItemIdentifiers(toolbar)
+	}
+
+
+	@objc func toolbarGroupSelectionChanged(_ sender: NSToolbarItemGroup) {
+		print("toolbarGroupSelectionChanged( \(sender.selectedIndex) )")
+		tabBarController.selectedIndex = sender.selectedIndex
+	}
 }
