@@ -16,10 +16,20 @@
 }
 @end
 
-@implementation ViewController
+@implementation ViewController{
+	UILabel *topLeft;
+	UILabel *topRight;
+	
+	UILabel *bottomLeft;
+	UILabel *bottomRight;
+}
 
 -(BOOL)prefersStatusBarHidden{
 	return YES;
+}
+
+-(UIInterfaceOrientationMask)supportedInterfaceOrientations{
+	return UIInterfaceOrientationMaskAll;
 }
 
 - (void)viewDidLoad {
@@ -57,7 +67,15 @@
 	// End points of the x and y edges of the second color circle
 	radGradientView.layer.endPoint = CGPointMake(0, 1);
 	[self.view addSubview:radGradientView];
+	topLeft = [self newCornerLabelWithX:0 Y:0];
+	topLeft.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleBottomMargin;
+	topLeft.center = CGPointMake(topLeft.frame.size.width * 0.5, topLeft.frame.size.height * 0.5);
+	[self.view addSubview:topLeft];
 	
+	topRight = [self newCornerLabelWithX:1 Y:0];
+	topRight.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleBottomMargin;
+	topRight.center = CGPointMake(self.view.bounds.size.width - (topLeft.frame.size.width * 0.5), topLeft.frame.size.height * 0.5);
+	[self.view addSubview:topRight];
 	
 	//
 	// Angluar Gradient
@@ -74,69 +92,33 @@
 	// The point in the view for the point it is drawn pointing towards
 	angGradientView.layer.endPoint = CGPointMake(1, 0.5);
 	[self.view addSubview:angGradientView];
+	bottomLeft = [self newCornerLabelWithX:0 Y:1];
+	bottomLeft.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleBottomMargin;
+	bottomLeft.center = CGPointMake(bottomLeft.frame.size.width * 0.5, self.view.bounds.size.height - bottomLeft.frame.size.height * 0.5);
+	[self.view addSubview:bottomLeft];
+	
+	bottomRight = [self newCornerLabelWithX:1 Y:1];
+	bottomRight.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleBottomMargin;
+	bottomRight.center = CGPointMake(self.view.bounds.size.width - (bottomRight.frame.size.width * 0.5), self.view.bounds.size.height - bottomRight.frame.size.height * 0.5);
+	[self.view addSubview:bottomRight];
+}
+
+-(UILabel*)newCornerLabelWithX:(CGFloat)x Y:(CGFloat)y{
+	UILabel *label = [[UILabel alloc] init];
+	label.text = [NSString stringWithFormat:@"(x:%.1f, y:%.1f)", x, y];
+	label.font = [UIFont systemFontOfSize:20];
+	[label sizeToFit];
+	label.textColor = [UIColor whiteColor];
+	label.shadowColor = [UIColor blackColor];
+	label.shadowOffset = CGSizeMake(0, 1);
+	return label;
 }
 
 
 - (void)viewDidLayoutSubviews {
 	[super viewDidLayoutSubviews];
-	const CGSize size = self.view.bounds.size;
 	
-	if (size.height > size.width)
-	{
-		// Vertical layout
-		CGFloat height = size.height/3;
-		
-		linGradientView.frame = ({
-			CGRect frame = CGRectZero;
-			frame.size.width = size.width;
-			frame.size.height = height;
-			frame;
-		});
-		
-		radGradientView.frame = ({
-			CGRect frame = CGRectZero;
-			frame.origin.y = height;
-			frame.size.width = size.width;
-			frame.size.height = height;
-			frame;
-		});
-		
-		angGradientView.frame = ({
-			CGRect frame = CGRectZero;
-			frame.origin.y = (size.height - height);
-			frame.size.width = size.width;
-			frame.size.height = height;
-			frame;
-		});
-	}
-	else
-	{
-		// Horizontal layout
-		CGFloat width = size.width/3;
-		
-		linGradientView.frame = ({
-			CGRect frame = CGRectZero;
-			frame.size.width = width;
-			frame.size.height = size.height;
-			frame;
-		});
-		
-		radGradientView.frame = ({
-			CGRect frame = CGRectZero;
-			frame.origin.x = width;
-			frame.size.width = width;
-			frame.size.height = size.height;
-			frame;
-		});
-		
-		angGradientView.frame = ({
-			CGRect frame = CGRectZero;
-			frame.origin.x = (size.width - width);
-			frame.size.width = width;
-			frame.size.height = size.height;
-			frame;
-		});
-	}
+	linGradientView.frame = self.view.bounds;
 }
 
 @end
