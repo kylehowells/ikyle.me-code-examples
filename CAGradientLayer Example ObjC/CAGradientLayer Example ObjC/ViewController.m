@@ -35,6 +35,7 @@
 - (void)viewDidLoad {
 	[super viewDidLoad];
 	
+	
 	//
 	// Linear Gradient
 	//
@@ -68,6 +69,7 @@
 	radGradientView.layer.endPoint = CGPointMake(0, 1);
 	[self.view addSubview:radGradientView];
 	
+	
 	//
 	// Angluar Gradient
 	//
@@ -84,7 +86,10 @@
 	angGradientView.layer.endPoint = CGPointMake(1, 0.5);
 	[self.view addSubview:angGradientView];
 	
+	
+	//
 	// Corner Labels
+	//
 	topLeft = [self newCornerLabelWithX:0 Y:0];
 	topLeft.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleBottomMargin;
 	topLeft.center = CGPointMake(topLeft.frame.size.width * 0.5, topLeft.frame.size.height * 0.5);
