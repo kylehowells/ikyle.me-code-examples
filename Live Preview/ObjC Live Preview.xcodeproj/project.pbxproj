@@ -13,6 +13,8 @@
 		CCBBC8BC24AD2ED10059B4D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CCBBC8BB24AD2ED10059B4D6 /* Assets.xcassets */; };
 		CCBBC8BF24AD2ED10059B4D6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CCBBC8BD24AD2ED10059B4D6 /* LaunchScreen.storyboard */; };
 		CCBBC8C224AD2ED10059B4D6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CCBBC8C124AD2ED10059B4D6 /* main.m */; };
+		CCBBC8CA24AD33680059B4D6 /* KHGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = CCBBC8C924AD33680059B4D6 /* KHGradientView.m */; };
+		CCBBC8CD24AD34970059B4D6 /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBBC8CC24AD34970059B4D6 /* SwiftUIView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +29,10 @@
 		CCBBC8BE24AD2ED10059B4D6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CCBBC8C024AD2ED10059B4D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CCBBC8C124AD2ED10059B4D6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		CCBBC8C824AD33680059B4D6 /* KHGradientView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KHGradientView.h; sourceTree = "<group>"; };
+		CCBBC8C924AD33680059B4D6 /* KHGradientView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KHGradientView.m; sourceTree = "<group>"; };
+		CCBBC8CB24AD34970059B4D6 /* ObjC Live Preview-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ObjC Live Preview-Bridging-Header.h"; sourceTree = "<group>"; };
+		CCBBC8CC24AD34970059B4D6 /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,10 +71,14 @@
 				CCBBC8B324AD2ECF0059B4D6 /* SceneDelegate.m */,
 				CCBBC8B524AD2ECF0059B4D6 /* ViewController.h */,
 				CCBBC8B624AD2ECF0059B4D6 /* ViewController.m */,
+				CCBBC8C824AD33680059B4D6 /* KHGradientView.h */,
+				CCBBC8C924AD33680059B4D6 /* KHGradientView.m */,
 				CCBBC8BB24AD2ED10059B4D6 /* Assets.xcassets */,
 				CCBBC8BD24AD2ED10059B4D6 /* LaunchScreen.storyboard */,
 				CCBBC8C024AD2ED10059B4D6 /* Info.plist */,
 				CCBBC8C124AD2ED10059B4D6 /* main.m */,
+				CCBBC8CC24AD34970059B4D6 /* SwiftUIView.swift */,
+				CCBBC8CB24AD34970059B4D6 /* ObjC Live Preview-Bridging-Header.h */,
 			);
 			path = "Live Preview";
 			sourceTree = "<group>";
@@ -104,6 +114,7 @@
 				TargetAttributes = {
 					CCBBC8AB24AD2ECF0059B4D6 = {
 						CreatedOnToolsVersion = 11.5;
+						LastSwiftMigration = 1150;
 					};
 				};
 			};
@@ -142,7 +153,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CCBBC8CA24AD33680059B4D6 /* KHGradientView.m in Sources */,
 				CCBBC8B724AD2ECF0059B4D6 /* ViewController.m in Sources */,
+				CCBBC8CD24AD34970059B4D6 /* SwiftUIView.swift in Sources */,
 				CCBBC8B124AD2ECF0059B4D6 /* AppDelegate.m in Sources */,
 				CCBBC8C224AD2ED10059B4D6 /* main.m in Sources */,
 				CCBBC8B424AD2ECF0059B4D6 /* SceneDelegate.m in Sources */,
@@ -277,6 +290,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = NFTL2336WY;
 				INFOPLIST_FILE = "Live Preview/Info.plist";
@@ -286,6 +300,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ikyle.Live-Preview";
 				PRODUCT_NAME = "ObjC Live Preview";
+				SWIFT_OBJC_BRIDGING_HEADER = "Live Preview/ObjC Live Preview-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -294,6 +311,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = NFTL2336WY;
 				INFOPLIST_FILE = "Live Preview/Info.plist";
@@ -303,6 +321,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ikyle.Live-Preview";
 				PRODUCT_NAME = "ObjC Live Preview";
+				SWIFT_OBJC_BRIDGING_HEADER = "Live Preview/ObjC Live Preview-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
