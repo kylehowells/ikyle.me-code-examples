@@ -116,9 +116,6 @@
 	NSDictionary *metadata = [self readMetadataFromURL:imageURL];
 	NSString *text = [self dictionaryToString:metadata];
 	textView.text = text;
-	
-	UIImage *image;
-	UIImageJPEGRepresentation(<#UIImage * _Nonnull image#>, <#CGFloat compressionQuality#>)
 }
 
 
