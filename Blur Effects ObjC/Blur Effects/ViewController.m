@@ -67,7 +67,7 @@
 	self.effectButton = [UIButton buttonWithType:UIButtonTypeCustom];
 	self.effectButton.configuration = blurButtonConfig;
 	[self.effectButton sizeToFit];
-	[self.effectButton addTarget:self action:@selector(chooseBlurEffect) forControlEvents:UIControlEventTouchUpInside];
+	//[self.effectButton addTarget:self action:@selector(chooseBlurEffect) forControlEvents:UIControlEventTouchUpInside];
 	[self.view addSubview:self.effectButton];
 	
 	
@@ -125,6 +125,38 @@
 		@[ @( UIBlurEffectStyleSystemThickMaterialDark ), @"SystemThickMaterialDark" ],
 		@[ @( UIBlurEffectStyleSystemChromeMaterialDark ), @"SystemChromeMaterialDark" ],
 	];
+	
+	
+	self.effectButton.showsMenuAsPrimaryAction = YES;
+	[self generateMenu];
+}
+
+-(void)generateMenu{
+	NSMutableArray *menuOptions = [NSMutableArray array];
+	
+	for (NSArray *style in self.blurStyleOptions) {
+		NSString *title = style[1];
+		
+		BOOL isCurrentOption = [self.titleLabel.text isEqualToString:title];
+		
+		UIAction *newAction = [UIAction actionWithTitle:title image:nil identifier:nil handler:^(__kindof UIAction * _Nonnull action) {
+			NSNumber *optionStyle = style[0];
+			
+			self.titleLabel.text = title;
+			[self.view setNeedsLayout];
+			
+			self.topVisualEffectView.effect = [UIBlurEffect effectWithStyle: (UIBlurEffectStyle)[optionStyle integerValue] ];
+			self.bottomVisualEffectView.effect = [UIBlurEffect effectWithStyle: (UIBlurEffectStyle)[optionStyle integerValue] ];
+			
+			[self generateMenu];
+		}];
+		newAction.state = isCurrentOption ? UIMenuElementStateOn : UIMenuElementStateOff;
+		
+		[menuOptions addObject:newAction];
+	}
+	
+	UIMenu *menu = [UIMenu menuWithTitle:@"Blur Styles" children:menuOptions];
+	self.effectButton.menu = menu;
 }
 
 -(BOOL)prefersStatusBarHidden {
@@ -207,36 +239,6 @@
 	[self presentViewController:pickerViewController animated:YES completion:nil];
 }
 
--(void)chooseBlurEffect{
-	UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Blur Styles" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
-	
-	UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * action) {
-		//action when pressed button
-	}];
-	[alertController addAction:cancelAction];
-	
-	
-	for (NSArray *style in self.blurStyleOptions) {
-		NSString *title = style[1];
-		
-		BOOL isCurrentOption = [self.titleLabel.text isEqualToString:title];
-		
-		NSString *optionTitle = [NSString stringWithFormat:@"%@%@", title, isCurrentOption ? @" ✔️" : @""];
-		
-		UIAlertAction *okAction = [UIAlertAction actionWithTitle:optionTitle style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-			NSNumber *optionStyle = style[0];
-			
-			self.titleLabel.text = title;
-			[self.view setNeedsLayout];
-			
-			self.topVisualEffectView.effect = [UIBlurEffect effectWithStyle: (UIBlurEffectStyle)[optionStyle integerValue] ];
-			self.bottomVisualEffectView.effect = [UIBlurEffect effectWithStyle: (UIBlurEffectStyle)[optionStyle integerValue] ];
-		}];
-		[alertController addAction:okAction];
-	}
-	
-	[self presentViewController:alertController animated: YES completion: nil];
-}
 
 
 // MARK: - PHPickerViewController
