@@ -201,7 +201,7 @@
 	
 	
 	CGFloat buttonBottomY = CGRectGetMaxY(self.effectButton.frame);
-	CGFloat availableHeight = (size.height - buttonBottomY) * 0.45;
+	CGFloat availableHeight = (size.height - (buttonBottomY + safeArea.bottom)) * 0.45;
 	
 	CGFloat effectWidth = MIN(size.width * 0.9, availableHeight);
 	
@@ -211,7 +211,7 @@
 		frame.size.height = effectWidth;
 		
 		frame.origin.x = (size.width - effectWidth) * 0.5;
-		frame.origin.y = buttonBottomY + 10;
+		frame.origin.y = buttonBottomY + 15;
 		frame;
 	});
 	
@@ -221,7 +221,7 @@
 		frame.size.height = effectWidth;
 		
 		frame.origin.x = (size.width - effectWidth) * 0.5;
-		frame.origin.y = (size.height - (effectWidth + 20));
+		frame.origin.y = (size.height - (effectWidth + 20 + safeArea.bottom));
 		frame;
 	});
 }
