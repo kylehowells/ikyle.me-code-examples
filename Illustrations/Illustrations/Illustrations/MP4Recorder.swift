@@ -31,14 +31,14 @@ class MP4Recorder: NSObject {
 		
 		
 		let avOutputSettings: [String: Any] = [
-			AVVideoCodecKey: AVVideoCodecType.h264,
+			AVVideoCodecKey: AVVideoCodecType.h264, // hevc
 			AVVideoWidthKey: NSNumber(value: Float(videoSize.width)),
 			AVVideoHeightKey: NSNumber(value: Float(videoSize.height))
 		]
 		
 		self.videoWriterInput = AVAssetWriterInput(mediaType: AVMediaType.video, outputSettings: avOutputSettings)
+		self.videoWriterInput.expectsMediaDataInRealTime = true
 		self.assetWriter.add(self.videoWriterInput)
-		
 		
 		let sourcePixelBufferAttributesDictionary = [
 			kCVPixelBufferPixelFormatTypeKey as String: NSNumber(value: kCVPixelFormatType_32ARGB),
@@ -81,6 +81,8 @@ class MP4Recorder: NSObject {
 			print("ERROR: Failed to generate pixelBuffer")
 			return false
 		}
+		
+		//print("isReadyForMoreMediaData: \(self.videoWriterInput.isReadyForMoreMediaData)")
 		
 		return self.pixelBufferAdaptor.append(pixelBuffer, withPresentationTime: presentationTime)
 	}
