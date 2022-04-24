@@ -233,6 +233,10 @@ class AnchorPointDemoViewController: DemoViewController {
 			exampleView.center = CGPoint(x: superviewFrame.midX, y: superviewFrame.midY)
 			
 			exampleView.transform = CGAffineTransform(rotationAngle: -rotationAmount)
+			
+			UIView.animate(withDuration: 10, animations: {
+				exampleView.transform = CGAffineTransform.identity
+			}, completion: nil)
 		}();
 		
 		{

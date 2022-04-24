@@ -15,6 +15,7 @@
 		CC99949C2813461B009C6BA3 /* AnchorPointDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC99949B2813461B009C6BA3 /* AnchorPointDemoViewController.swift */; };
 		CC99949F28134675009C6BA3 /* DemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC99949E28134675009C6BA3 /* DemoViewController.swift */; };
 		CC9994A22813658A009C6BA3 /* KHVisualiseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9994A12813658A009C6BA3 /* KHVisualiseView.swift */; };
+		CC9994A42814E2E7009C6BA3 /* MP4Recorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9994A32814E2E7009C6BA3 /* MP4Recorder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		CC99949B2813461B009C6BA3 /* AnchorPointDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnchorPointDemoViewController.swift; sourceTree = "<group>"; };
 		CC99949E28134675009C6BA3 /* DemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoViewController.swift; sourceTree = "<group>"; };
 		CC9994A12813658A009C6BA3 /* KHVisualiseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KHVisualiseView.swift; sourceTree = "<group>"; };
+		CC9994A32814E2E7009C6BA3 /* MP4Recorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MP4Recorder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +67,7 @@
 				CC99948628134455009C6BA3 /* AppDelegate.swift */,
 				CC99948828134455009C6BA3 /* SceneDelegate.swift */,
 				CC99948A28134455009C6BA3 /* ViewController.swift */,
+				CC9994A32814E2E7009C6BA3 /* MP4Recorder.swift */,
 				CC99949D28134652009C6BA3 /* Demos */,
 				CC99948F28134455009C6BA3 /* Assets.xcassets */,
 				CC99949128134455009C6BA3 /* LaunchScreen.storyboard */,
@@ -163,6 +166,7 @@
 			files = (
 				CC99948B28134455009C6BA3 /* ViewController.swift in Sources */,
 				CC9994A22813658A009C6BA3 /* KHVisualiseView.swift in Sources */,
+				CC9994A42814E2E7009C6BA3 /* MP4Recorder.swift in Sources */,
 				CC99948728134455009C6BA3 /* AppDelegate.swift in Sources */,
 				CC99948928134455009C6BA3 /* SceneDelegate.swift in Sources */,
 				CC99949C2813461B009C6BA3 /* AnchorPointDemoViewController.swift in Sources */,
