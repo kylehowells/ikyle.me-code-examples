@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CC6A5D06287147F1001AFF29 /* MP4Exporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6A5D05287147F1001AFF29 /* MP4Exporter.swift */; };
 		CC99948728134455009C6BA3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC99948628134455009C6BA3 /* AppDelegate.swift */; };
 		CC99948928134455009C6BA3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC99948828134455009C6BA3 /* SceneDelegate.swift */; };
 		CC99948B28134455009C6BA3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC99948A28134455009C6BA3 /* ViewController.swift */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CC6A5D05287147F1001AFF29 /* MP4Exporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MP4Exporter.swift; sourceTree = "<group>"; };
 		CC99948328134455009C6BA3 /* Illustrations.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Illustrations.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC99948628134455009C6BA3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CC99948828134455009C6BA3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -68,6 +70,7 @@
 				CC99948828134455009C6BA3 /* SceneDelegate.swift */,
 				CC99948A28134455009C6BA3 /* ViewController.swift */,
 				CC9994A32814E2E7009C6BA3 /* MP4Recorder.swift */,
+				CC6A5D05287147F1001AFF29 /* MP4Exporter.swift */,
 				CC99949D28134652009C6BA3 /* Demos */,
 				CC99948F28134455009C6BA3 /* Assets.xcassets */,
 				CC99949128134455009C6BA3 /* LaunchScreen.storyboard */,
@@ -170,6 +173,7 @@
 				CC99948728134455009C6BA3 /* AppDelegate.swift in Sources */,
 				CC99948928134455009C6BA3 /* SceneDelegate.swift in Sources */,
 				CC99949C2813461B009C6BA3 /* AnchorPointDemoViewController.swift in Sources */,
+				CC6A5D06287147F1001AFF29 /* MP4Exporter.swift in Sources */,
 				CC99949F28134675009C6BA3 /* DemoViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
