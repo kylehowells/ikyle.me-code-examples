@@ -13,11 +13,12 @@ import CoreGraphics
 
 // MARK: - MP4Recorder
 
+/// Screen records and write the result to an MP4
 class MP4Recorder: NSObject {
 	
-	let videoExporter: MP4Exporter
+	private let videoExporter: MP4Exporter
 	
-	lazy var displayLink: CADisplayLink = { [unowned self] in
+	private lazy var displayLink: CADisplayLink = { [unowned self] in
 		let displayLink = CADisplayLink(target: self, selector: #selector(self.update))
 		displayLink.preferredFrameRateRange = CAFrameRateRange(minimum: 60, maximum: 60)
 		return displayLink
@@ -25,6 +26,12 @@ class MP4Recorder: NSObject {
 	
 	let renderFrame: ()->UIImage
 	
+	
+	/// <#Description#>
+	/// - Parameters:
+	///   - videoSize: <#videoSize description#>
+	///   - outputURL: <#outputURL description#>
+	///   - renderFrame: <#renderFrame description#>
 	init?(videoSize: CGSize, outputURL: URL, renderFrame: @escaping ()->UIImage) {
 		guard let exporter = MP4Exporter(videoSize: videoSize, outputURL: outputURL) else { return nil }
 		
@@ -39,19 +46,19 @@ class MP4Recorder: NSObject {
 		guard self.videoExporter.addImage(image: renderFrame(), withPresentationTime: CMTime.zero) else { return nil }
 	}
 	
+	
 	// MARK: - Render Frame
 	
-	var firstFrameTime:CFTimeInterval? = nil
+	private var firstFrameTime:CFTimeInterval? = nil
 	
 	@objc private func update()
 	{
 		let timestamp = self.displayLink.timestamp
 		
 		if let firstFrameTime: CFTimeInterval = self.firstFrameTime {
-			let image:UIImage = renderFrame()
+			let image:UIImage = self.renderFrame()
 			
-			let timeDiff: CFTimeInterval = timestamp - firstFrameTime
-			//print("timeDiff: \(timeDiff)")
+			let timeDiff: CFTimeInterval = (timestamp - firstFrameTime)
 			
 			let presentationTime = CMTime(seconds: Double(timeDiff), preferredTimescale: 10000)
 			
@@ -64,6 +71,7 @@ class MP4Recorder: NSObject {
 			self.firstFrameTime = timestamp
 		}
 	}
+	
 	
 	// MARK: - Stop Video
 	
