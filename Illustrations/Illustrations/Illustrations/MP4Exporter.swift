@@ -13,15 +13,21 @@ import CoreGraphics
 
 // MARK: - MP4Exporter
 
+/// Exports an MP4 video
 class MP4Exporter: NSObject {
 	
-	let videoSize:CGSize
+	/// The size of the video being exported
+	let videoSize: CGSize
 	
-	let assetWriter: AVAssetWriter
-	let videoWriterInput: AVAssetWriterInput
-	let pixelBufferAdaptor: AVAssetWriterInputPixelBufferAdaptor
+	private let assetWriter: AVAssetWriter
+	private let videoWriterInput: AVAssetWriterInput
+	private let pixelBufferAdaptor: AVAssetWriterInputPixelBufferAdaptor
 	
 	
+	/// <#Description#>
+	/// - Parameters:
+	///   - videoSize: <#videoSize description#>
+	///   - outputURL: <#outputURL description#>
 	init?(videoSize: CGSize, outputURL: URL) {
 		self.videoSize = videoSize
 		
@@ -30,7 +36,6 @@ class MP4Exporter: NSObject {
 		}
 		
 		self.assetWriter = _assetWriter
-		
 		
 		let avOutputSettings: [String: Any] = [
 			AVVideoCodecKey: AVVideoCodecType.h264, // hevc
@@ -55,7 +60,6 @@ class MP4Exporter: NSObject {
 		
 		super.init()
 		
-		
 		self.assetWriter.startWriting()
 		self.assetWriter.startSession(atSourceTime: CMTime.zero)
 	}
@@ -63,7 +67,12 @@ class MP4Exporter: NSObject {
 	
 	// MARK: - Insert Image
 	
-	/// Appends an image, returning true if successful
+	/// Appends an image to the video being exported
+	/// - Parameters:
+	///   - image: The image to insert into the video
+	///   - presentationTime: The frame time, local to this video and its start time.
+	///   - waitIfNeeded: If the asset input is not ready to receive a new image wait until it is
+	/// - Returns: Returns true if successful.
 	func addImage(image: UIImage, withPresentationTime presentationTime: CMTime, waitIfNeeded: Bool = false) -> Bool {
 		guard let pixelBufferPool = self.pixelBufferAdaptor.pixelBufferPool else {
 			print("ERROR: pixelBufferPool is nil ")
@@ -94,6 +103,8 @@ class MP4Exporter: NSObject {
 	
 	// MARK: - Stop Video
 	
+	/// <#Description#>
+	/// - Parameter completion: <#completion description#>
 	func stopRecording(completion: @escaping ()->()) {
 		// Stop
 		self.videoWriterInput.markAsFinished()
@@ -109,12 +120,12 @@ class MP4Exporter: NSObject {
 	
 	// MARK: - Internal Helper
 	
-	/// - Converts a UIImage to a CVPixelBuffer, returning nil on failure
+	/// - Converts a UIImage to a CVPixelBuffer
 	/// - Parameters:
-	///   - image: <#image description#>
-	///   - pixelBufferPool: <#pixelBufferPool description#>
-	///   - size: <#size description#>
-	/// - Returns: <#description#>
+	///   - image: The input image.
+	///   - pixelBufferPool: A pixel buffer pool to use for the conversion.
+	///   - size: The target size of the output image pixel buffer.
+	/// - Returns: Returns the CVPixelBuffer is successful, and nil on failure.
 	private func pixelBufferFromImage(image: UIImage, pixelBufferPool: CVPixelBufferPool, size: CGSize) -> CVPixelBuffer?
 	{
 		guard let cgImage = image.cgImage else { return nil }
@@ -165,6 +176,7 @@ class MP4Exporter: NSObject {
 		let y = (newSize.height < size.height) ? (size.height - newSize.height) / 2 : -(newSize.height-size.height) / 2
 		
 		context.draw(cgImage, in: CGRect(x:x, y:y, width:newSize.width, height:newSize.height))
+		
 		CVPixelBufferUnlockBaseAddress(pixelBuffer, CVPixelBufferLockFlags(rawValue: CVOptionFlags(0)))
 		
 		return pixelBuffer
