@@ -69,8 +69,7 @@
 				CC99948628134455009C6BA3 /* AppDelegate.swift */,
 				CC99948828134455009C6BA3 /* SceneDelegate.swift */,
 				CC99948A28134455009C6BA3 /* ViewController.swift */,
-				CC9994A32814E2E7009C6BA3 /* MP4Recorder.swift */,
-				CC6A5D05287147F1001AFF29 /* MP4Exporter.swift */,
+				CCD2A01F2872112E00630718 /* MP4 */,
 				CC99949D28134652009C6BA3 /* Demos */,
 				CC99948F28134455009C6BA3 /* Assets.xcassets */,
 				CC99949128134455009C6BA3 /* LaunchScreen.storyboard */,
@@ -95,6 +94,15 @@
 				CC9994A12813658A009C6BA3 /* KHVisualiseView.swift */,
 			);
 			path = "Anchor Points";
+			sourceTree = "<group>";
+		};
+		CCD2A01F2872112E00630718 /* MP4 */ = {
+			isa = PBXGroup;
+			children = (
+				CC9994A32814E2E7009C6BA3 /* MP4Recorder.swift */,
+				CC6A5D05287147F1001AFF29 /* MP4Exporter.swift */,
+			);
+			path = MP4;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
