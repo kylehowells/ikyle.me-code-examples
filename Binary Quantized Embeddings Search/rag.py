@@ -16,7 +16,7 @@ from typing import List, Tuple
 import json
 
 class RAG:
-    """Retrieval Augmented Generation implementation for semantic text search."""
+    """Semantic text search for Retrieval Augmented Generation"""
     
     def __init__(self, db_path: str = None):
         """Initialize the RAG system.
