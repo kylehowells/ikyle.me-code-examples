@@ -35,3 +35,4 @@ DerivedData/
 *.xcuserstate
 *.xcuserdatad
 .DS_Store
+Binary Quantized Embeddings Search/rag.db
